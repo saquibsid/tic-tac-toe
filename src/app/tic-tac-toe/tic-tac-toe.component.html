@@ -1,0 +1,19 @@
+<div class="game">
+    <div class="status">
+      <div *ngIf="!winner">Current Player: {{ config.players[currentPlayerIndex] }}</div>
+      <div *ngIf="winner">Winner: {{ winner }}!</div>
+    </div>
+  
+    <div class="board" [style.gridTemplateColumns]="'repeat(' + config.size + ', 1fr)'">
+      <div *ngFor="let row of board; let i = index">
+        <div *ngFor="let cell of row; let j = index"
+             class="cell"
+             (click)="play(i, j)">
+          {{ cell }}
+        </div>
+      </div>
+    </div>
+  
+    <button (click)="resetGame()">Reset Game</button>
+  </div>
+  
